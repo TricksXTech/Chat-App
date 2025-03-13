@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 h-screen">
+    <div class="container mx-auto h-screen p-4">
+        <div class="flex h-full bg-white rounded-lg shadow-lg overflow-hidden">
+            <!-- Sidebar -->
+            <div class="w-1/4 bg-gray-50 border-r border-gray-200">
+                <div class="p-4 border-b border-gray-200">
+                    <h2 class="text-xl font-semibold text-gray-800">Chats</h2>
+                </div>
+                <div class="p-4">
+                    <div class="flex items-center space-x-4 p-3 bg-blue-50 rounded-lg">
+                        <div class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center text-white">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-800">My Love ❤️</h3>
+                            <p class="text-sm text-gray-500">Online</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Chat Area -->
+            <div class="flex-1 flex flex-col">
+                <!-- Chat Header -->
+                <div class="p-4 border-b border-gray-200 flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h2 class="text-lg font-semibold text-gray-800">My Love ❤️</h2>
+                    </div>
+                    <div class="flex space-x-4">
+                        <button class="p-2 rounded-full hover:bg-gray-100" title="Voice Call">
+                            <i class="fas fa-phone text-gray-600"></i>
+                        </button>
+                        <button class="p-2 rounded-full hover:bg-gray-100" title="Video Call">
+                            <i class="fas fa-video text-gray-600"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Messages Area -->
+                <div class="flex-1 overflow-y-auto p-4" id="messages">
+                    <!-- Messages will be dynamically added here -->
+                </div>
+
+                <!-- Input Area -->
+                <div class="p-4 border-t border-gray-200">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex space-x-2">
+                            <button class="p-2 rounded-full hover:bg-gray-100" title="Voice Note">
+                                <i class="fas fa-microphone text-gray-600"></i>
+                            </button>
+                            <button class="p-2 rounded-full hover:bg-gray-100" title="Video Note">
+                                <i class="fas fa-video text-gray-600"></i>
+                            </button>
+                            <button class="p-2 rounded-full hover:bg-gray-100" title="Send Image">
+                                <i class="fas fa-image text-gray-600"></i>
+                            </button>
+                        </div>
+                        <input type="text" placeholder="Type your message..." class="flex-1 p-3 rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button class="p-3 rounded-full bg-blue-500 text-white hover:bg-blue-600">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call Modal (Hidden by default) -->
+    <div class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center" id="callModal">
+        <div class="bg-white rounded-lg p-6 w-96">
+            <div class="text-center">
+                <div class="w-20 h-20 rounded-full bg-blue-500 flex items-center justify-center text-white mx-auto mb-4">
+                    <i class="fas fa-heart text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Incoming Call</h3>
+                <p class="text-gray-600 mb-6">My Love is calling...</p>
+                <div class="flex justify-center space-x-4">
+                    <button class="p-4 rounded-full bg-red-500 text-white hover:bg-red-600">
+                        <i class="fas fa-phone-slash"></i>
+                    </button>
+                    <button class="p-4 rounded-full bg-green-500 text-white hover:bg-green-600">
+                        <i class="fas fa-phone"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Socket.IO -->
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
